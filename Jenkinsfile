@@ -45,6 +45,7 @@ node {
             println('Hello from a Job DSL script!')
             println(rmsg)
         }
+    }
     // -------------------------------------------------------------------------
             // Create new scratch org to test your code.
             // -------------------------------------------------------------------------
