@@ -45,5 +45,26 @@ node {
             println('Hello from a Job DSL script!')
             println(rmsg)
         }
+	    // -------------------------------------------------------------------------
+            // Create new scratch org to test your code.
+            // -------------------------------------------------------------------------
+ 
+            stage('Create Test Scratch Org') {
+                rc = command "${toolbelt}/sfdx force:org:create --targetdevhubusername ${HUB_ORG} --setdefaultusername --definitionfile config/project-scratch-def.json --setalias ciorg --wait 10 --durationdays 1"
+                if (rc != 0) {
+                    error 'Salesforce test scratch org creation failed.'
+                }
+            }
     }
+	// -------------------------------------------------------------------------
+            // Display test scratch org info.
+            // -------------------------------------------------------------------------
+ 
+            stage('Display Test Scratch Org') {
+                rc = command "${toolbelt}/sfdx force:org:display --targetusername ciorg"
+                if (rc != 0) {
+                    error 'Salesforce test scratch org display failed.'
+                }
+            }
+ 
 }
