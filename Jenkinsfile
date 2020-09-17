@@ -51,7 +51,7 @@ node {
                     error 'Salesforce dev hub org authorization failed.'
                 }
 	   else{
-			   rmsg = bat returnStdout: true, script: "\"${toolbelt}\" force:mdapi:deploy:report -d manifest/. -u ${HUB_ORG}"
+			   rmsg = bat returnStdout: true, script: "\"${toolbelt}\" force:mdapi:deploy:report "
 			}
             }
     // -------------------------------------------------------------------------
